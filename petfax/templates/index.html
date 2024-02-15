@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PETFAX™ | Adopt, Adore, Cherish, & Gush about Cute and Furries</title>
-</head>
-<body>
-    <H1>Welcome to PetFax</H1>
+
+
+{% extends 'base.html' %}
+
+{% block title %}PETFAX™ | Adopt, Adore, Cherish, & Gush about Cute and Furries{% endblock %}
+
+{% block content %}
+    <h2>Welcome to PetFax</h2>
     {% for pet in pets %}
-        <H2>{{ pet.pet_name }}</H2>
-        <img src="{{ pet.pet_photo }}"/>
+    <li>
+        <h3><a href="{{ url_for('pet.display', index=pet.pet_id) }}">{{ pet.pet_name }}</a></h3>
+        <img src="{{ pet.pet_photo }}" alt="{{ pet.pet_name }}">
         <p>{{ pet.pet_fact }}</p>
-    {% endfor %}
-</body>
-</html>
+    </li>
+{% endfor %}
+</ul>
+<a href="{{ url_for('fax.new') }}"><button>Create New Fax</button></a>
+{% endblock %}

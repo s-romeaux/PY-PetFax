@@ -14,5 +14,8 @@ def create_app():
     from . import pet 
     app.register_blueprint(pet.bp)
 
-    # return the app 
+    # register fact blueprint
+    from . import fax
+    app.register_blueprint(fax.fax_bp)
+
     return app
